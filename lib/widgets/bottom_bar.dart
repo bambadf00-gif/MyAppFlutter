@@ -5,6 +5,17 @@ class NavBarBottom extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return BottomNavigationBar(
+      selectedItemColor: Colors.blue,
+      unselectedItemColor: Colors.black,
+      items: [
+        BottomNavigationBarItem(icon: Icon(Icons.home_max_outlined), label: ''),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.production_quantity_limits_sharp),
+          label: '',
+        ),
+        BottomNavigationBarItem(icon: Icon(Icons.person), label: ''),
+      ],
+    );
   }
 }
