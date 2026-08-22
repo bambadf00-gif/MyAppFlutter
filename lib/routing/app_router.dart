@@ -61,7 +61,11 @@ final router = GoRouter(
           routes: [
             GoRoute(
               path: AppRoutes.orders,
-              builder: (context, state) => const OrdersPage(),
+              builder: (context, state) => Column(
+                children: [
+                  Expanded(child: OrdersPage())
+                ],
+              ),
             ),
           ],
         ),

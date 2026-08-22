@@ -5,8 +5,11 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(children: [CarteSection(), FiltreSecion(), SectionCrt()]),
+    return Container(
+      padding: EdgeInsets.all(0),
+      child: SingleChildScrollView(
+        child: Column(children: [CarteSection(), FiltreSecion(), SectionCrt()]),
+      ),
     );
   }
 }
