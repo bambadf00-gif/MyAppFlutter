@@ -26,22 +26,52 @@ final router = GoRouter(
       path: AppRoutes.settings,
       builder: (context, state) => const SettingsPage(),
     ),
-    ShellRoute(
-      builder: (context, state, child) {
-        return Scaffold(body: child, bottomNavigationBar: const NavBarBottom());
+
+    StatefulShellRoute.indexedStack(
+      builder: (context, state, navigationShell) {
+        return Scaffold(
+          appBar: AppBar(
+            title: Text('Bamba', style: TextStyle(color: Colors.blue)),
+            actions: [
+              IconButton(
+                onPressed: () {
+                  context.go(AppRoutes.settings);
+                },
+                icon: Icon(Icons.settings),
+              ),
+            ],
+          ),
+          body: navigationShell,
+          bottomNavigationBar: NavBarBottom(
+            currentIndex: navigationShell.currentIndex,
+            onTap: (index) => navigationShell.goBranch(index),
+          ),
+        );
       },
-      routes: [
-        GoRoute(
-          path: AppRoutes.home,
-          builder: (context, state) => const HomePage(),
+      branches: [
+        StatefulShellBranch(
+          routes: [
+            GoRoute(
+              path: AppRoutes.home,
+              builder: (context, state) => const HomePage(),
+            ),
+          ],
         ),
-        GoRoute(
-          path: AppRoutes.orders,
-          builder: (context, state) => const OrdersPage(),
+        StatefulShellBranch(
+          routes: [
+            GoRoute(
+              path: AppRoutes.orders,
+              builder: (context, state) => const OrdersPage(),
+            ),
+          ],
         ),
-        GoRoute(
-          path: AppRoutes.products,
-          builder: (context, state) => const ProductsPage(),
+        StatefulShellBranch(
+          routes: [
+            GoRoute(
+              path: AppRoutes.products,
+              builder: (context, state) => const ProductsPage(),
+            ),
+          ],
         ),
       ],
     ),

@@ -1,27 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:mon_app/routing/app_routes.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Bamba', style: TextStyle(color: Colors.blue)),
-        actions: [
-          IconButton(
-            onPressed: () {
-              context.go(AppRoutes.settings);
-            },
-            icon: Icon(Icons.settings),
-          ),
-        ],
-      ),
-      body: SingleChildScrollView(
-        child: Column(children: [CarteSection(), FiltreSecion(), SectionCrt()]),
-      ),
+    return SingleChildScrollView(
+      child: Column(children: [CarteSection(), FiltreSecion(), SectionCrt()]),
     );
   }
 }
